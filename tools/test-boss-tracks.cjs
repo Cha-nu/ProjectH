@@ -31,18 +31,4 @@ for(const [key,file,constant] of [['driveArt','bosses/drive_parts.png','DRIVE_AR
  const data=fs.readFileSync('scripts/visual_motion.gd','utf8').match(new RegExp('const '+constant+' := (\\[.*\\])'))[1];
  assert.deepEqual(JSON.parse(data),V[key],'painted drive/ground registration matches native');
 }
-// Observe the real draw helper: motion must reach the painted track parts.
-const vm=require('node:vm'),source=fs.readFileSync('web/render.js','utf8');let commands=[];
-const sandbox={HoneyVisuals:V,Math,clamp:(v,a,b)=>Math.max(a,Math.min(b,v)),tex:{driveParts:'painted-drive'},c:new Proxy({}, {get:(_,k)=>(...a)=>commands.push([k,...a])})};
-vm.createContext(sandbox);
-for(const name of ['driveSprite','trackFace','trackSidePoint','drawBossTracks']){
- const start=source.indexOf('function '+name+'('),end=source.indexOf('\nfunction ',start+1);vm.runInContext(source.slice(start,end),sandbox);
-}
-for(const type of ['tank','cannon']){
- const r=require('../web/game.js').BOSS_RIG[type],b={type,x:900,y:576,flip:false,track:0};
- const draw=()=>{commands=[];sandbox.drawBossTracks(b,r);return JSON.stringify(commands);};
- const parked=draw();assert.equal(draw(),parked);b.track=21;assert.notEqual(draw(),parked,'travel visibly changes the painted wheels and shoes');
- const forward=draw();b.track=-21;assert.notEqual(draw(),forward,'reverse changes the painted track phase');
- assert(commands.some(c=>c[0]==='drawImage'&&c[1]==='painted-drive'));
-}
 console.log('PASS boss tracks: entrance, charge, reverse, stop, phase 2, air, wreck, continuous belt and 32 registered sprites.');

@@ -12,7 +12,7 @@ const sandbox={c,tex,BOSS_RIG,FLOOR,STAGES,CELEBRATE_BURST,HoneyVisuals:require(
 sandbox.viewCam=()=>sandbox.g.camera;
 vm.createContext(sandbox);
 for(const prefix of ['const INK=','const DISPLAY=','const ITEM='])vm.runInContext(source.slice(source.indexOf(prefix),source.indexOf('\n',source.indexOf(prefix))),sandbox);
-for(const name of ['box','line','circle','ellipse','poly','ring','text','cell','hero','drawShip','zoneBackdrop','ground','bossSprite','driveSprite','trackFace','trackSidePoint','drawBossTracks','drawBossBody','drawBoss']){
+for(const name of ['box','line','circle','ellipse','poly','ring','text','cell','hero','drawShip','zoneBackdrop','ground','bossSprite','drawBossBody','drawBoss']){
  const start=source.indexOf('function '+name+'('),next=source.indexOf('\nfunction ',start+1);
  vm.runInContext(source.slice(start,next<0?source.length:next),sandbox);
 }

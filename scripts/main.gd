@@ -974,45 +974,12 @@ func bossSprite(sheet: String, i: int, x: float, y: float, size: float, o := {})
 	if o.get("filter"): c.filter = o.filter
 	c.drawImage(tex["boss_" + sheet], a[0], a[1], a[2] - a[0], a[3] - a[1], (d[0] - 512 * o.get("cx", .5)) * k, (d[1] - 512 * o.get("base", .5)) * k, (d[2] - d[0]) * k, (d[3] - d[1]) * k); c.restore()
 
-func driveSprite(i: int, x: float, y: float, w: float, h: float, rot: float = 0) -> void:
-	var a: Array = Motion.DRIVE_ART[i]; c.save(); c.translate(x, y); c.rotate(rot)
-	c.drawImage(tex.driveParts, a[0], a[1], a[2] - a[0], a[3] - a[1], -w/2, -h/2, w, h); c.restore()
-
-func trackFace(x: float, y: float, w: float, r: float, distance: float) -> void:
-	for i in range(ceili(r * 2 / 13)):
-		var v := -r + fposmod(-distance, 13) + i * 13
-		if v >= r: continue
-		var edge := sqrt(maxf(0, 1 - v*v/(r*r)))
-		driveSprite(2, x + 4*(1-edge), y + v, w*(.55+.45*edge), 9)
-
-func trackSidePoint(distance: float) -> Dictionary:
-	var p := Motion.tread_point(distance, 200, 40); var t := clampf(p.x / 200, 0, 1)
-	return {"x": p.x * .72, "y": p.y * (1 - .24*t) - p.x * .09, "visible": p.y > 0 or p.x > 200}
-
-func drawBossTracks(b: Dictionary, r: Dictionary) -> void:
-	# The choco tank sheet paints its own treads and fish wheels; only the cannon still gets the animated overlay.
-	if b.type != "cannon": return
-	var d: Array = Motion.boss_art(r.sheet, 0).dest; var w: float = d[2] - d[0]; var h: float = d[3] - d[1]
-	var distance: float = b.get("track", 0.0) * (-1 if b.flip else 1) / r.k * 400 / w
-	c.save(); c.translate(b.x + (d[0] - 256) * r.k, b.y + (d[1] - 512 * r.base) * r.k); c.scale(w * r.k / 400, h * r.k / 360)
-	var cy := 310.0 if b.type == "cannon" else 306.0; var total := 400 + 80 * PI
-	for i in range(40):
-		var t := i * total / 40 + distance / .72; var p := trackSidePoint(t)
-		if not p.visible: continue
-		var q := trackSidePoint(t + .2); driveSprite(1, 224 + p.x, cy + p.y, 14, 8, atan2(q.y - p.y, q.x - p.x))
-	trackFace(36, cy - 12, 40, 34, distance); trackFace(164, cy, 58, 43, distance)
-	for wheel in [[0,0,29,40],[56,-6,25,36],[102,-12,23,33],[145,-18,20,30]]:
-		c.save(); c.translate(224 + wheel[0], cy + wheel[1]); c.scale(wheel[2], wheel[3]); c.rotate(distance / wheel[3]); driveSprite(0, 0, 0, 2, 2); c.restore()
-	c.restore()
-
 func drawBossBody(b: Dictionary, r: Dictionary, flash: Variant) -> void:
 	c.save()
 	if b.dead:
 		c.translate(b.x, b.y); c.scale(1, 1 - .32 * clampf(b.get("sink", 0.0) / .35, 0, 1)); c.translate(-b.x, -b.y)
-	bossSprite(r.sheet, 1 if b.phase == 2 or b.dead else 0, b.x, b.y, 512 * r.k, {"base": r.base, "filter": flash})
-	c.save()
-	if flash: c.filter = flash
-	drawBossTracks(b, r); c.restore(); c.restore()
+	# Tank and cannon sheets paint their own treads and wheels, so the body is a single sprite for every boss.
+	bossSprite(r.sheet, 1 if b.phase == 2 or b.dead else 0, b.x, b.y, 512 * r.k, {"base": r.base, "filter": flash}); c.restore()
 
 func drawStoryTank(x: float, y: float, travel: float) -> void:
 	var r: Dictionary = HG.BOSS_RIG.tank.duplicate(); r.k = .94

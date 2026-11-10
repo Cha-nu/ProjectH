@@ -478,36 +478,10 @@ function bossSprite(sheet,i,x,y,size,o={}){
  const q=HoneyVisuals.bossArt(sheet,i),a=q.source,d=q.dest,k=size/512;
  c.save();c.translate(x,y);c.rotate(o.rot||0);c.scale(o.sx||1,o.sy||1);if(o.filter)c.filter=o.filter;
  c.drawImage(tex['boss_'+sheet],a[0],a[1],a[2]-a[0],a[3]-a[1],(d[0]-512*(o.cx??.5))*k,(d[1]-512*(o.base??.5))*k,(d[2]-d[0])*k,(d[3]-d[1])*k);c.restore();}
-function driveSprite(i,x,y,w,h,rot=0){
- const a=HoneyVisuals.driveArt[i];c.save();c.translate(x,y);c.rotate(rot);
- c.drawImage(tex.driveParts,a[0],a[1],a[2]-a[0],a[3]-a[1],-w/2,-h/2,w,h);c.restore();}
-function trackFace(x,y,w,r,distance){
- for(let i=0;i<Math.ceil(r*2/13);i++){
-  const v=-r+((-distance%13)+13)%13+i*13;if(v>=r)continue;
-  const edge=Math.sqrt(Math.max(0,1-v*v/(r*r)));
-  driveSprite(2,x+4*(1-edge),y+v,w*(.55+.45*edge),9);}}
-function trackSidePoint(distance){
- const p=HoneyVisuals.treadPoint(distance,200,40),t=clamp(p.x/200,0,1);
- return {x:p.x*.72,y:p.y*(1-.24*t)-p.x*.09,visible:p.y>0||p.x>200};}
-function drawBossTracks(b,r){
- // The choco tank sheet paints its own treads and fish wheels; only the cannon still gets the animated overlay.
- if(b.type!=='cannon')return;
- const d=HoneyVisuals.bossArt(r.sheet,0).dest,w=d[2]-d[0],h=d[3]-d[1];
- const distance=(b.track||0)*(b.flip?-1:1)/r.k*400/w;
- c.save();c.translate(b.x+(d[0]-256)*r.k,b.y+(d[1]-512*r.base)*r.k);c.scale(w*r.k/400,h*r.k/360);
- const cy=b.type==='cannon'?310:306,total=400+80*Math.PI;
- // Painted shoes follow the visible lower/rear belt; upper belt remains behind the armor.
- for(let i=0;i<40;i++){
-  const t=i*total/40+distance/.72,p=trackSidePoint(t);if(!p.visible)continue;
-  const q=trackSidePoint(t+.2);driveSprite(1,224+p.x,cy+p.y,14,8,Math.atan2(q.y-p.y,q.x-p.x));}
- trackFace(36,cy-12,40,34,distance);trackFace(164,cy,58,43,distance);
- const wheels=[[0,0,29,40],[56,-6,25,36],[102,-12,23,33],[145,-18,20,30]];
- for(const [x,y,rx,ry] of wheels){c.save();c.translate(224+x,cy+y);c.scale(rx,ry);c.rotate(distance/ry);driveSprite(0,0,0,2,2);c.restore();}
- c.restore();}
 function drawBossBody(b,r,flash){
  c.save();if(b.dead){c.translate(b.x,b.y);c.scale(1,1-.32*clamp((b.sink||0)/.35,0,1));c.translate(-b.x,-b.y);}
- bossSprite(r.sheet,b.phase===2||b.dead?1:0,b.x,b.y,512*r.k,{base:r.base,filter:flash});
- c.save();if(flash)c.filter=flash;drawBossTracks(b,r);c.restore();c.restore();}
+ // Tank and cannon sheets paint their own treads and wheels, so the body is a single sprite for every boss.
+ bossSprite(r.sheet,b.phase===2||b.dead?1:0,b.x,b.y,512*r.k,{base:r.base,filter:flash});c.restore();}
 function drawStoryTank(x,y,travel){
  const r={...BOSS_RIG.tank,k:.94},S=512*r.k,b={type:'tank',x,y,track:travel,flip:false,phase:1,dead:false};
  drawBossBody(b,r);
