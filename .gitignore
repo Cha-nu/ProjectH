@@ -1,0 +1,10 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+/tools/godot/
+/build/*.log
+/build/web-standalone/
+/build/*.zip
+
+# Build outputs and local test browser profiles
+/build/

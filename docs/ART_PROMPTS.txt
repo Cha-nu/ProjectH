@@ -1,0 +1,105 @@
+IMAGE GENERATION RECORD
+Method: built-in image_gen.imagegen (not the CLI/API fallback).
+Original references: the six images supplied by the user. Original source files were not modified.
+All consumed output assets were copied into this project. Sprite cropping is performed at rendering time.
+
+assets/characters/hero_sheet.png
+Reference: supplied pink-haired girl holding a toy rifle.
+Prompt:
+Create a production 2D game sprite sheet based precisely on this pink-haired chibi girl holding a toy AKM. Preserve her pink long hair, pink eyes, beige school jacket, plaid pink skirt, white socks, dark shoes, thick burgundy outline and cute proportions. Transparent background. Exact uniform 4 columns x 2 rows grid, 8 equally sized cells, no borders, no text, no shadows on background. Every full body fits within its cell with generous 12% clear padding, consistent character scale and baseline. All face RIGHT in side / slight three-quarter view and hold the rifle aimed right. Top row: four successive distinct RUN CYCLE poses with legs and arms moving, flowing hair. Bottom row left to right: idle aiming standing, crouched aiming (lower but same proportions), airborne jump knees tucked hair flowing, hurt recoil leaning back. Weapons are playful illustrated props. Clean polished flat animation art, not pixel art, not 3D. Keep each sprite isolated within its grid cell.
+
+assets/characters/hero_body_sheet.png
+Reference: generated hero_sheet.png, for modular in-game weapon attachment.
+Prompt:
+Edit this exact 4 columns x 2 rows sprite sheet for a modular 2D game animation rig. Preserve the eight character poses, exact same placement, scale, 4x2 grid, pink haired chibi identity, clothes, every body part, expressions, art style and truly transparent background. ONLY remove all eight rifles completely, reconstruct any covered small clothing areas, and preserve hands in their gripping positions as if holding an invisible rifle (back hand near chest, front hand extended right). Do not add any gun or weapon anywhere. Each character must still have two natural hands and arms, not amputated. Preserve the crouching/jumping/running/idle/hurt sequence exactly. No extra elements, no text, no borders.
+
+assets/characters/tank.png
+Reference: supplied giant honey tank artwork.
+Prompt:
+Production sprite for 2D side scrolling game. Extract the complete cute giant honey-coated fish tank and blonde commander from this reference onto a truly transparent background. Preserve all design details and style, brown smiling fish, honey cannon facing LEFT, green armor, tracks, caged bees, blonde girl and duck on her head. Remove the white background, all ground shadows and all detached smoke clouds/dust. Single complete tank only, same three quarter perspective, no text, no frame, clean silhouette, 5% clear margin all around.
+
+assets/backgrounds.png
+Prompt:
+A production 2D hand-painted cute run-and-gun game BACKGROUND ATLAS, exact 2x2 grid of four equally sized rectangular landscapes, no borders, no typography, no characters. Thick soft burgundy outlines, cream paper highlights, charming detailed illustrated cartoon style, pastel honey yellows, sage and mint greens, coral pinks, warm browns. Each panel has empty lower quarter for gameplay with distant scenery above, side view layered scenery, no foreground objects obstructing play. TOP LEFT: Honey flower kingdom broadcasting studio, adorable rounded little radio buildings, pink flowers, honey jars, churro trees, bright cyan sky and cream clouds, large radio tower on far right. TOP RIGHT: inside huge golden honeycomb factory, honey vats, copper pipes, huge hexagonal windows glowing amber, hanging chains. BOTTOM LEFT: pastel turquoise ocean harbor at sunset, wooden pier buildings, fish banners, cranes, ships, distant islands and gulls. BOTTOM RIGHT: giant seafood fortress with green military towers, fish-shaped battlements, chains and honey tanks under dramatic plum twilight sky. Detailed cohesive game environment concept art, whimsical, lively, not photorealistic, no pixel art. All 4 panels equal dimensions and edge-to-edge filled.
+
+assets/characters/weapons_clean.png
+Initial prompt (weapons.png retained as a source variant):
+A modular game weapon sprite atlas. Exact uniform 3 columns x 2 rows, six isolated toy weapon sprites, side-view facing RIGHT, muzzle at right, stocks or grips at left. Top row from left to right: AKM with brown wood stock and curved magazine; Kar98k long brown wood bolt action rifle; M4 carbine black and sage green with straight magazine and carry handle. Bottom row left to right: RPG-26 thick olive green launch tube; FMG-9 short chunky folded submachinegun dark grey; Glock 19 small charcoal toy pistol. Cute hand-drawn chibi cartoon proportions, thick burgundy outlines, soft cream highlights, simple warm cel shading, matching adorable pink-haired chibi game characters. Each gun is horizontally centered in its own cell, plenty of clear margin around all edges. Consistent natural relative scale: pistol much smaller than rifles, RPG thicker, Kar98k longest. Transparent background. No characters, hands, bullets, muzzle flashes, lettering, labels, borders, text, or watermark. Keep all silhouettes clean and readable.
+Final edit prompt:
+Remove ALL background from this weapon sprite sheet. Keep all SIX weapons, each exactly unchanged, same size, location, color, layout. Everything outside the six precise solid weapon silhouettes must be perfectly transparent alpha zero: remove every black area, brown glow, gradient, aura and shadow. No ambient shadow, NO background glow, NO backdrop. Only six solid isolated weapon silhouettes with clean antialiased edges. Do not change the weapons, arrangement or canvas dimensions.
+
+assets/characters/honeybee.webp and enemy.webp
+Copied without editing from user-supplied originals. Runtime source rectangles remove transparent margins.
+
+2026-10-21 animation and weapon update — built-in image_gen tool, transparent_background=true.
+
+assets/characters/m4_black.png (reference: weapons_clean.png)
+Prompt:
+Create ONE isolated black M4 toy carbine sprite matching the cartoon weapons in the reference. Only the M4 from top right, no other weapons. Change all green parts to matte BLACK / charcoal. Keep recognizable M4 stock, carry handle, ribbed handguard, barrel, front sight, straight dark magazine. Flat side view facing RIGHT, entire gun visible horizontally centered with 8 percent transparent margin. Thick burgundy outline, soft grey specular highlights, cute polished cel-shaded game art. Absolutely transparent outside the solid gun silhouette, no smoke, no background, no shadow, no labels.
+
+assets/characters/fish_sheet.png (reference: enemy.webp)
+Prompt:
+Create a 2D game animation sprite sheet of this exact cute brown fish character: preserve the dark small oval eyes, tiny happy tongue mouth, pink round cheeks, honey dripping on forehead, shiny brown body, dark green seaweed cape, green leaf under body and small blue tail fins. Same face design in EVERY frame, never replace eyes/mouth with generic expressions. Exact grid FOUR columns TWO rows, eight equal cells, no borders, no text, truly transparent background. All full characters fit in their own cell, consistent scale and feet baseline, face mostly LEFT / three-quarter front so face remains visible. Top row four distinct successive waddling walk cycle frames: body gently squash/stretch and tilt, little fins alternating, leaf curling, tail swishing, face stable and recognizable. Bottom row: idle relaxed breathing pose; crouched anticipation compressed body; airborne stretched hop with waving tail; attack pose leaning forward with cheek puff and mouth open but same tongue-face identity. Smooth rounded organic motion, not pixel art, clean thick burgundy outlines and simple cel shading. No weapons, no extra elements, no cast shadows.
+
+assets/characters/boss_parts.png (reference: tank.png)
+Prompt:
+Create a modular 2D animation PARTS ATLAS of this exact cute giant honey fish tank, matching its detailed cartoon style and identities. Exact TWO columns by TWO rows, four equal cells, transparent background, absolutely no borders or labels. TOP LEFT cell: main tank hull with giant smiling brown fish body, green armor, honey and side bee cages, fish flag and exhaust stacks; REMOVE the big front honey cannon, REMOVE both caterpillar track assemblies, REMOVE blonde commander. Reconstruct the hidden hull behind removed parts, keep fish face and silhouette. TOP RIGHT cell: ONLY the big golden honey-coated main cannon and its olive mounting collar, pointing LEFT, isolated full cannon. BOTTOM LEFT cell: ONLY the blonde chibi commander girl in dark uniform with white duck on her head, from waist up, isolated, smiling and waving, matching reference identity. BOTTOM RIGHT cell: ONLY one complete large tank caterpillar track assembly with three olive wheels and dark brown tread, matching tank three-quarter perspective, isolated. Keep all four components separated, clean alpha zero between them, generous transparent margin within each cell. The parts will be attached and animated separately in a game, no overlapping between cells. Preserve honey/fish/bee details. No ground, shadows, smoke clouds, text or background.
+Note: generated parts use nonuniform spacing; runtime source rectangles were adjusted after visual inspection.
+
+2026-10-21 background replacement: assets/backgrounds.png
+Built-in image_gen, opaque 2x2 background atlas. Clean distant scenery; actual collision terrain is rendered by game code. Original image generation retained in Codex generated_images.
+Prompt:
+Production background atlas for a cute 2D SIDE VIEW run and gun videogame. EXACT 2 columns 2 rows, four equally sized wide landscape panels, no borders. Crisp smooth clean cartoon vector-like cel shading, large restful shapes, pastel palette, very restrained details, NO grain NO texture NO tiny speckles NO crosshatching NO busy ornament NO lettering NO characters NO weapons. Each panel is purely DISTANT BACKDROP, NOT playable terrain: no foreground platforms no stairs no foreground floors no perspective roads. Bottom 40 percent of EACH panel is very quiet flat low contrast color with only distant silhouettes; gameplay platforms and floor will be drawn separately in engine. Horizon at 60 percent height. TOP LEFT honey flower broadcasting village: pale blue sky, 3 simple cream and pink rounded studio houses far away, one radio tower, simple honey trees. TOP RIGHT honey factory: broad warm cream honeycomb windows, 2 large golden tanks far behind, simple thick pipes, pale warm beige bottom. BOTTOM LEFT harbor: pastel blue sky and calm cyan sea, two distant boats and one simple crane, broad blue empty bottom. BOTTOM RIGHT seafood fortress: muted lavender sky, simple distant olive fortress towers with fish emblems, muted lavender grey empty bottom. Maintain visually clear silhouettes and large flat shapes, simple burgundy outlines only around distant buildings. Art suitable for smooth illustration chibi characters. No vignette no blur no noise. The four rectangular panels exactly meet at center and fill entire canvas.
+
+2026-10-22 style unification — Codex CLI (codex exec, image_gen.imagegen) with the user-supplied originals as style references
+(blonde commander girl, honeybee.webp, enemy.webp, hero_reference.png): flat cel colouring, thick uniform burgundy outlines, no gloss.
+Redrawn in place, same canvas size and part positions: generated/boss_crew.png, characters/boss_parts.png, generated/pow_tied.png.
+New: generated/pow_cage.png (honeybee locked in a cage; replaces the code-drawn cage). Previous versions are in generated/source/.
+hero_victory.png: puffed left cheek (frames 2 and 7) and strong round blush painted by tools/victory-blush.py from source/hero_victory_before_blush.png.
+2026-10-22 title scene: generated/menu_bg_clean.png redrawn as an open flower meadow (no honey tree), generated/menu_bush_front.png as a green flower hedge (no honey). Old versions: generated/source/menu_bg_honey_tree.png, menu_bush_honey.png.
+2026-10-22 title scene v3: menu_bg_clean.png = original tree kept, honey drips removed, honey bushes replaced by flower meadow (source/menu_bg_meadow_no_tree.png is the tree-less version).
+2026-10-22 enemies: generated/enemies/{grunt,hopper,flyer,shield,bomber,heavy,turret}.png — 4x2 animation sheets (0-3 walk, 4 idle, 5 windup, 6 attack, 7 hurt) drawn from enemy.webp; parachute.png. generated/ground/*.png per-stage ground strips.
+2026-10-22 bosses: generated/boss_crew.png = three new gwamegi war machines (walker, honey siege mortar, landing ship) in the style of the user's original tank.png, no commander; characters/boss_parts.png restored to the original tank-derived parts. Older attempts in generated/source/.
+2026-10-22 title v4: menu_bg_clean.png repainted with the tree integrated into the scene (same line weight/light, roots, shadow); menu_tree_front.png = trunk layer cut by tools/menu-tree-layer.py so one gwamegi can hide behind it. Old: source/menu_bg_tree_v1.png.
+2026-10-22 hero: puffed front cheek (user refs 볼표현.jpg/볼표현2.png) added via Codex to hero_body_sheet, hero_run, hero_victory, story_churros, menu_churros_sit; leftover AKM stock removed from body/run sheets; new two-handed pistol sheets characters/hero_body_pistol.png and generated/hero_run_pistol.png (grip anchors measured from the clasped hands, see weaponPose). Old versions in generated/source/*_stock.png, *_nocheek.png.
+2026-10-22 cheeks v2: mochi-style cheek lobe (user ref CiBjcR...jfif) regenerated on all hero sheets; tools/realign-sheet.py fits edited frames back into their source cells, tools/clean-sheet-cells.py removes neighbour-frame slivers (the cut piece in front of the jump pose).
+2026-10-22 melee: generated/hero_punch.png (4-frame punch: wind-up, punch, impact, recover) replaces the knife slash.
+
+2026-11-07 cartoon restyle of in-game scenery — Codex CLI (ChatGPT login) built-in image_gen, edited from the previous files with assets/characters/menu_friends_v2.png and hero_reference.png as style references. Replaced assets/generated/zones_{town,factory,harbor,fortress}_ink.png, ground_ink.png and zone_portals.png (previous versions kept in build/bg_restyle/old_realistic/). Full prompts: build/bg_restyle/full_*.txt.
+
+Use your built-in image generation tool (image_gen) to make ONE new image, then copy the generated PNG file to the exact path given at the end. Do not draw it with code, do not edit any other project file.
+
+Image 1 is the CURRENT background sheet for a cute 2D side-scrolling run-and-gun game. It is a grid of 2 columns x 3 rows = 6 equal landscape panels (one per game area), 1672x941 canvas. Its realistic anime-photo painting style clashes with the game's characters.
+Images 2 and 3 are the CHARACTER STYLE REFERENCE (the pink-haired chibi heroine, bee friends and brown honey-fish enemies).
+
+TASK: Redraw image 1 as a new sheet with the SAME 2x3 grid, same panel order, same subject and rough layout of each panel (same landmarks, same horizon height, same flat empty ground band in the bottom ~30% of every panel), but painted in EXACTLY the style of images 2-3:
+- cute storybook chibi cartoon world, simplified rounded chunky shapes, slightly squashed playful proportions (buildings, trees, props look like toys)
+- thick soft warm burgundy/brown outlines on near objects, thinner lighter outlines on distant ones
+- flat cel shading with one soft shadow tone and cream highlights, NO realistic texture, NO photo detail, NO tiny busy detail, NO noise
+- warm pastel palette harmonised with the heroine: honey yellow, coral pink, cream, sage/mint green, soft sky blue
+- distant layers lower contrast and lighter than the characters so sprites stay readable
+- bottom ~30% of each panel stays a calm, flat, low-contrast walkable ground band with no props, matching image 1's ground band position
+- left and right edges of each panel should be quiet (no object cut in half at the edge)
+No characters, creatures, text, letters, numbers, UI, borders or grid lines. Panels meet edge to edge and fill the whole 16:9 canvas.
+
+STAGE: honey-flower town. Keep: Mediterranean-ish hill town far away, stone gates and lamps, beehive farm with wooden hive boxes, market awnings, radio tower with dishes and small studio building.
+
+STAGE: honey factory. Keep: big warehouse loading docks with roll-up doors and crates, parked truck, steel pipes and honey tanks, catwalks, fish emblem on the wall, distant factory skyline and mountains. Make metal look like painted toy metal in warm honey/brass and soft teal-grey, not gritty.
+
+STAGE: harbor. Keep: harbor master office, fish banners on poles, moored fishing boats, piers and bollards, sea with a distant hillside town and mountains, fluffy clouds, gulls. Sea and sky in soft cyan/sky blue.
+
+STAGE: seafood fortress at sunset. Keep: military base with guard towers, radar dish, fences and barricades with hazard stripes, gate pillars with fish banners, distant domed fortress city silhouette, coral-pink and lavender sunset sky. Keep it cute and toy-like, warm sunset palette, not grim.
+
+Use your built-in image generation tool (image_gen) to make ONE new image, then copy the generated PNG file to build/bg_restyle/ground_ink.png. Do not draw it with code, do not edit any other project file.
+
+Image 1 is the CURRENT ground texture sheet (1536x1024) for a cute 2D side-scrolling game: four horizontal strips stacked vertically, each a side-view walkable ground lip that repeats horizontally under the play area. Strip 1 (top, y 14-260): pink-beige stone plaza wall. Strip 2 (y 269-505): blue-grey factory steel floor with a yellow hazard edge. Strip 3 (y 516-736): wooden harbor pier planks with bolts. Strip 4 (y 749-1024): lavender-grey fortress concrete wall.
+Images 2 and 3 are the CHARACTER STYLE REFERENCE.
+
+Redraw image 1 with EXACTLY the same four strips, same vertical positions and heights, same materials and colours family, each strip having a flat top walking edge at the same height as image 1, but in the cute storybook chibi cartoon style of images 2-3: simplified chunky rounded blocks/planks/panels, thick soft warm brown outlines, flat cel shading with one shadow tone and cream highlights, warm pastel palette, NO realistic grit, cracks, stains or noise. Each strip must tile seamlessly left-to-right (the left edge continues the right edge). Thin plain gaps between strips like image 1. No characters, text, UI or borders. Reply with the saved path only.
+
+Use your built-in image generation tool (image_gen) with a TRANSPARENT background to make ONE new image, then copy the generated PNG (with alpha preserved) to build/bg_restyle/zone_portals.png. Do not draw it with code, do not edit any other project file.
+
+Image 1 is the CURRENT sprite sheet (square, transparent) of four zone entrance gates for a cute 2D side-scrolling game, 2x2 grid: top-left flower-covered wooden honey town arch with a honeycomb emblem; top-right factory gate of brass pipes, steel posts with hazard stripes, roll-up shutter and lamp; bottom-left harbor gate with blue roof, rope, lanterns and a fish sign; bottom-right stone fortress gate with battlements, fish banner and lanterns.
+Images 2 and 3 are the CHARACTER STYLE REFERENCE.
+
+Redraw the same four gates in the same 2x2 layout, same size, position, front-view shape and open empty doorway in each cell, but in the cute storybook chibi cartoon style of images 2-3: chunky rounded toy-like shapes, thick soft warm burgundy/brown outlines, flat cel shading with one shadow tone and cream highlights, warm pastel palette, NO realistic texture, grit or noise. Everything outside the four gate silhouettes, INCLUDING the inside of each doorway, must be fully transparent (alpha 0). Keep generous transparent margin between the cells. No ground, shadows, characters, text or borders. Reply with the saved path only.

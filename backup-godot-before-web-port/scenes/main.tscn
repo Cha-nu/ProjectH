@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bqaae6hgr21kq"]
+
+[ext_resource type="Script" uid="uid://buspldwvybfnv" path="res://scripts/game.gd" id="1"]
+
+[node name="HoneyChurros" type="Node2D" unique_id=216911611]
+script = ExtResource("1")
