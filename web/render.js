@@ -490,7 +490,8 @@ function trackSidePoint(distance){
  const p=HoneyVisuals.treadPoint(distance,200,40),t=clamp(p.x/200,0,1);
  return {x:p.x*.72,y:p.y*(1-.24*t)-p.x*.09,visible:p.y>0||p.x>200};}
 function drawBossTracks(b,r){
- if(b.type!=='tank'&&b.type!=='cannon')return;
+ // The choco tank sheet paints its own treads and fish wheels; only the cannon still gets the animated overlay.
+ if(b.type!=='cannon')return;
  const d=HoneyVisuals.bossArt(r.sheet,0).dest,w=d[2]-d[0],h=d[3]-d[1];
  const distance=(b.track||0)*(b.flip?-1:1)/r.k*400/w;
  c.save();c.translate(b.x+(d[0]-256)*r.k,b.y+(d[1]-512*r.base)*r.k);c.scale(w*r.k/400,h*r.k/360);

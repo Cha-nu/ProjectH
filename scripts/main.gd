@@ -990,7 +990,8 @@ func trackSidePoint(distance: float) -> Dictionary:
 	return {"x": p.x * .72, "y": p.y * (1 - .24*t) - p.x * .09, "visible": p.y > 0 or p.x > 200}
 
 func drawBossTracks(b: Dictionary, r: Dictionary) -> void:
-	if b.type != "tank" and b.type != "cannon": return
+	# The choco tank sheet paints its own treads and fish wheels; only the cannon still gets the animated overlay.
+	if b.type != "cannon": return
 	var d: Array = Motion.boss_art(r.sheet, 0).dest; var w: float = d[2] - d[0]; var h: float = d[3] - d[1]
 	var distance: float = b.get("track", 0.0) * (-1 if b.flip else 1) / r.k * 400 / w
 	c.save(); c.translate(b.x + (d[0] - 256) * r.k, b.y + (d[1] - 512 * r.base) * r.k); c.scale(w * r.k / 400, h * r.k / 360)

@@ -103,3 +103,21 @@ Image 1 is the CURRENT sprite sheet (square, transparent) of four zone entrance 
 Images 2 and 3 are the CHARACTER STYLE REFERENCE.
 
 Redraw the same four gates in the same 2x2 layout, same size, position, front-view shape and open empty doorway in each cell, but in the cute storybook chibi cartoon style of images 2-3: chunky rounded toy-like shapes, thick soft warm burgundy/brown outlines, flat cel shading with one shadow tone and cream highlights, warm pastel palette, NO realistic texture, grit or noise. Everything outside the four gate silhouettes, INCLUDING the inside of each doorway, must be fully transparent (alpha 0). Keep generous transparent margin between the cells. No ground, shadows, characters, text or borders. Reply with the saved path only.
+
+2026-11-10 boss restyle — Codex CLI built-in image_gen. Design references: the user-supplied 꿀 메카 크랩 / 꿀방울 초코 탱크 / 꿀방울 허니 비행선 images (copied to build/boss_restyle/ref_*.png); layout reference: the previous *_ink.png sheet. Crab and airship sheets swap their weapon-B cells (town airship gets the honey missile pod, harbor crab gets the cargo crane). Rig tables refreshed with tools/pack-boss-sheet.py.
+
+Use your built-in image generation tool (image_gen) with a TRANSPARENT background to make ONE new image (landscape 1536x1024), then copy the generated PNG (alpha preserved) to the exact path given at the end. Do not draw it with code and do not edit any other project file.
+
+Image 1 is the NEW BOSS DESIGN to follow exactly (character, colours, materials, honey drips, brown face with pink cheeks and tongue, blonde commander girl with a white duck on her head, caged bee friends, flags). Keep its cute thick-outlined cel-shaded cartoon style.
+Image 2 is the OLD parts sheet of the game, used ONLY as a LAYOUT reference: a 4 columns x 2 rows grid of 8 equal cells, each cell holding one separately animated part.
+
+Make a production modular boss PARTS SHEET of the image-1 boss in that same layout: exactly 4 columns x 2 rows, 8 equal cells, every part centred in its own cell with generous transparent margin (never crossing a cell edge, alpha 0 between parts). Same side view facing LEFT as image 1, consistent scale between body and weapon cells (weapons are smaller than the body, as in image 2).
+Row 1: cell 1 = the complete BODY of the boss WITHOUT the two detachable weapons described below (cleanly reconstruct where they were attached; keep commander, cages, flags and everything else); cell 2 = the same body heavily DAMAGED (cracked armour, an exposed glowing golden honey core in the chest, a little smoke), same pose and size as cell 1; cell 3 = WEAPON A alone; cell 4 = WEAPON A broken (cracked, bent, a few fragments beside it).
+Row 2: cell 5 = WEAPON B alone; cell 6 = WEAPON B broken; cell 7 = a round honey HATCH with its lid open and a small cute bee peeking out, matching the boss materials; cell 8 = a cluster of 5-6 armour DEBRIS chunks from this boss spread to fill the cell.
+No text, labels, numbers, grid lines, ground, shadows, smoke clouds outside the damaged body, or background.
+
+This boss: the honey mecha crab. WEAPON A = the four-barrel gatling gun on the upper left (with its short mount). WEAPON B = the cluster of tall honey tanks / canisters on the upper right, drawn as a honey missile pod. The crab body keeps its legs, both big honey claws, honeycomb core, cockpit rail with the commander and megaphone, flag and the bee cages.
+
+This boss: the honey choco tank. WEAPON A = the big golden honey main cannon at the front (with its round mount). WEAPON B = the small side gun on the hull side (draw it as a compact two-barrel side gatling in the same olive/brass style). The body keeps the brown face dome with honey on top, leaf skirt, both caterpillar tracks with fish-emblem wheels, rear cargo crate, exhaust stacks, flag, lantern, bee cages and the commander.
+
+This boss: the honey airship. WEAPON A = the big honey cannon at the front-left nose. WEAPON B = a small cargo CRANE arm with a hanging honey crate on a chain (in the same brass/olive style; it replaces the hanging crates as a weapon). The body keeps the brown face, honey-dripping top, green and cream hull, both propellers, wings and tail fin, the bridge with the commander and megaphone, flag, bee cages and the glowing honey gondola underneath.
